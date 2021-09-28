@@ -1,0 +1,8 @@
+[package]
+name = "matika-tui"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+matika-interpreter = { path = "../matika-interpreter" }
+textplots = "0.8.0"
