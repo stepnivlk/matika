@@ -1,8 +1,4 @@
-use crate::{
-    expr::Expr,
-    stmt::{Fnc, Stmt},
-    token::{Token, TokenKind},
-};
+use crate::{expr::Expr, stmt::{Fnc, Stmt}, token::{LiteralKind, Token, TokenKind}};
 
 pub struct Parser<'a> {
     tokens: &'a Vec<Token>,
@@ -156,10 +152,26 @@ impl<'a> Parser<'a> {
 
             self.consume(TokenKind::RightParen);
 
-            expr = Expr::Call {
-                callee: Box::new(expr),
-                args,
-            };
+            match expr {
+                Expr::Literal(LiteralKind::Number(_)) => {
+                    if args.len() == 1 {
+                        expr = Expr::Binary {
+                            left: Box::new(expr),
+                            right: Box::new(args[0].clone()),
+                            op: Token::star(),
+                        };
+                    } else {
+                        panic!();
+                    }
+                },
+                _ => {
+                    expr = Expr::Call {
+                        callee: Box::new(expr),
+                        args,
+                    };
+                }
+            }
+
         }
 
         expr

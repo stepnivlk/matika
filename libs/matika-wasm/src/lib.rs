@@ -1,14 +1,20 @@
-use matika_interpreter::{Interpreter, Parser, Scanner};
+use matika_interpreter::Matika as Libmatika;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
-pub fn interpret(txt: String) -> f64 {
-    let mut scanner = Scanner::new(txt);
-    let tokens = scanner.scan();
+pub struct Matika {
+    interpreter: Libmatika,
+}
 
-    let mut parser = Parser::new(tokens);
-    let stmts = parser.parse();
+#[wasm_bindgen]
+impl Matika {
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> Self {
+        Self { interpreter: Libmatika::new() }
+    }
 
-    let mut interpreter = Interpreter::new();
-    interpreter.interpret(stmts).into()
+    #[wasm_bindgen]
+    pub fn eval(&mut self, txt: String) -> f64 {
+        self.interpreter.eval(txt).into()
+    }
 }

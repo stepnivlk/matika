@@ -4,7 +4,7 @@ use crate::callable::Callable;
 use crate::environment::Environment;
 use crate::stmt::Fnc;
 use crate::value::Value;
-use crate::{interpreter, Interpreter};
+use crate::Interpreter;
 
 #[derive(Debug)]
 pub struct Function {

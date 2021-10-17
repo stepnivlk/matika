@@ -6,3 +6,5 @@ edition = "2018"
 [dependencies]
 matika-interpreter = { path = "../matika-interpreter" }
 textplots = "0.8.0"
+rustyline = "9.0.0"
+rustyline-derive = "0.5.0"
