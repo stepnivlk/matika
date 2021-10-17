@@ -55,7 +55,15 @@ impl Token {
     pub fn eof() -> Self {
         Self {
             kind: TokenKind::Eof,
-            lexeme: "".to_string(),
+            lexeme: "".into(),
+            literal: None,
+        }
+    }
+
+    pub fn star() -> Self {
+        Self {
+            kind: TokenKind::Star,
+            lexeme: "*".into(),
             literal: None,
         }
     }

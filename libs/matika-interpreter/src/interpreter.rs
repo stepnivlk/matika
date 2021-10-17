@@ -30,10 +30,10 @@ impl Interpreter {
         self
     }
 
-    pub fn interpret(&mut self, statements: Vec<Stmt>) -> Value {
+    pub fn interpret(&mut self, stmts: Vec<Stmt>) -> Value {
         let mut val = Value::Number(0.0);
 
-        for stmt in statements {
+        for stmt in stmts {
             val = self.execute(&stmt);
         }
 
