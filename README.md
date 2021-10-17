@@ -2,7 +2,7 @@
 is an experimental mathematics interpreter
 
 ```
->>> f(x) = 2.25sin(0.507 * (x - 1.25)) + 3.95
+>>> f(x) = 2.25sin(0.507(x - 1.25)) + 3.95
 >>> f(10)
 1.7852406047118041
 >>> plot(f)
